@@ -1,7 +1,6 @@
 package com.enetwiz;
 
 import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
@@ -11,6 +10,8 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
+
+import org.vaadin.spring.events.Event;
 import org.vaadin.spring.events.EventBus;
 
 interface BodyView extends View {
@@ -18,23 +19,26 @@ interface BodyView extends View {
     String NAME = "body";
 
     /**
-     * Gets the view main component
+     * Gets the main view component
      */
     Component getMainComponent();
 
     /**
-     * Sets caption for button
-     *
-     * @param caption the new caption
-     */
-    void setButtonCaption(String caption);
-
-    /**
-     * Show the answer after click on the button
+     * Show the answer
      *
      * @param answer the answer content
      */
     void showAnswer(String answer);
+
+    interface BodyViewListener {
+
+        /**
+         * Event was fired after click on the button
+         *
+         * @param event fired event object
+         */
+        void onButtonClick(Event<Button.ClickEvent> event);
+    }
 }
 
 @UIScope
@@ -44,12 +48,18 @@ public class BodyViewImpl extends VerticalLayout implements BodyView {
     @Autowired
     private EventBus.SessionEventBus eventBus;
 
+    /**
+     * Welcome button
+     */
     private Button button;
 
+    /**
+     * Build the view content
+     */
     @PostConstruct
     private void init() {
         setMargin(true);
-        button = new Button("Welcome in the MVP world!");
+        button = new Button("Hello Spring!");
         button.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
@@ -66,11 +76,6 @@ public class BodyViewImpl extends VerticalLayout implements BodyView {
     @Override
     public Component getMainComponent() {
         return this;
-    }
-
-    @Override
-    public void setButtonCaption(String caption) {
-        button.setCaption(caption);
     }
 
     @Override

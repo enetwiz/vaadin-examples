@@ -7,21 +7,17 @@ import org.vaadin.spring.events.Event;
 import org.vaadin.spring.navigator.annotation.VaadinPresenter;
 import org.vaadin.spring.navigator.Presenter;
 
+import com.enetwiz.BodyView.BodyViewListener;
+
 @VaadinPresenter(viewName = BodyView.NAME)
-public class BodyPresenter extends Presenter<BodyView> {
+public class BodyPresenter extends Presenter<BodyView> implements BodyViewListener {
 
     @Autowired
     private MyService myService;
 
-    @Override
-    protected void init() {
-        super.init();
-        getView().setButtonCaption(myService.helloSpring());
-    }
-
     @EventBusListenerMethod
+    @Override
     public void onButtonClick(Event<Button.ClickEvent> event) {
         getView().showAnswer(myService.helloVaadin());
     }
-
 }
