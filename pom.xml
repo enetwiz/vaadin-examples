@@ -93,6 +93,7 @@
 
     <modules>
         <module>hello-spring</module>
+        <module>mvp-example</module>
     </modules>
 
 </project>
