@@ -9,9 +9,11 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.ContextLoaderListener;
+
 import javax.servlet.annotation.WebListener;
 import javax.servlet.annotation.WebServlet;
 
@@ -21,20 +23,6 @@ public class MyUI extends UI {
 
     @Autowired
     private MyService myService;
-
-
-    @WebServlet(urlPatterns = {"/*"}, asyncSupported = true)
-    public static class MyUIServlet extends SpringVaadinServlet {
-    }
-
-    @WebListener
-    public static class MyContextLoaderListener extends ContextLoaderListener {
-    }
-
-    @Configuration
-    @EnableVaadin
-    public static class MyConfiguration {
-    }
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -48,6 +36,19 @@ public class MyUI extends UI {
         });
         layout.addComponent(button);
         setContent(layout);
+    }
+
+    @WebServlet(urlPatterns = {"/*"}, asyncSupported = true)
+    public static class MyUIServlet extends SpringVaadinServlet {
+    }
+
+    @WebListener
+    public static class MyContextLoaderListener extends ContextLoaderListener {
+    }
+
+    @Configuration
+    @EnableVaadin
+    public static class MyConfiguration {
     }
 
 }

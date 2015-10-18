@@ -7,6 +7,7 @@ public class MyService {
     public String helloSpring() {
         return "Hello Spring!";
     }
+
     public String helloVaadin() {
         return "Hello Vaadin ;)";
     }

@@ -1,19 +1,20 @@
 package com.enetwiz;
 
-import javax.servlet.annotation.WebListener;
-import javax.servlet.annotation.WebServlet;
+import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.Title;
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.spring.annotation.EnableVaadin;
+import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.spring.server.SpringVaadinServlet;
+import com.vaadin.ui.UI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.ContextLoaderListener;
-import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.Title;
-import com.vaadin.spring.annotation.SpringUI;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.UI;
-import com.vaadin.spring.annotation.EnableVaadin;
 import org.vaadin.spring.events.annotation.EnableEventBus;
-import com.vaadin.spring.server.SpringVaadinServlet;
+
+import javax.servlet.annotation.WebListener;
+import javax.servlet.annotation.WebServlet;
 
 @SpringUI(path = "/")
 @Theme("valo")
@@ -22,6 +23,11 @@ public class MvpUI extends UI {
 
     @Autowired
     BodyPresenter presenter;
+
+    @Override
+    protected void init(VaadinRequest vaadinRequest) {
+        setContent(presenter.getView().getMainComponent());
+    }
 
     @Configuration
     @EnableVaadin
@@ -35,11 +41,6 @@ public class MvpUI extends UI {
 
     @WebListener
     public static class MyContextLoaderListener extends ContextLoaderListener {
-    }
-
-    @Override
-    protected void init(VaadinRequest vaadinRequest) {
-        setContent(presenter.getView().getMainComponent());
     }
 
 }
