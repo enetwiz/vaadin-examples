@@ -9,13 +9,11 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-
+import javax.servlet.annotation.WebListener;
+import javax.servlet.annotation.WebServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.ContextLoaderListener;
-
-import javax.servlet.annotation.WebListener;
-import javax.servlet.annotation.WebServlet;
 
 @Theme("valo")
 @SpringUI

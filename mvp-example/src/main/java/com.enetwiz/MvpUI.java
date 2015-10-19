@@ -7,14 +7,12 @@ import com.vaadin.spring.annotation.EnableVaadin;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.server.SpringVaadinServlet;
 import com.vaadin.ui.UI;
-
+import javax.servlet.annotation.WebListener;
+import javax.servlet.annotation.WebServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.ContextLoaderListener;
 import org.vaadin.spring.events.annotation.EnableEventBus;
-
-import javax.servlet.annotation.WebListener;
-import javax.servlet.annotation.WebServlet;
 
 @SpringUI(path = "/")
 @Theme("valo")

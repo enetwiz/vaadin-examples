@@ -2,7 +2,6 @@ package com.enetwiz;
 
 import com.enetwiz.BodyView.BodyViewListener;
 import com.vaadin.ui.Button;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.spring.events.Event;
 import org.vaadin.spring.events.annotation.EventBusListenerMethod;
