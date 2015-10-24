@@ -98,3 +98,33 @@ Tym samym rozwijajac skrot z nazwy wzorca otrzymamy 3 elementy:
 
 > **UWAGA**: Powyzsze przyklady kodu maja za zadanie przyblizyc zalozenia wzorca MVP przez co
   zostaly maksymalnie uproszczone
+
+
+Komunikacje pomiedzy poszczegolnymi warstwami obrazuje ponizszy diagram:
+
+[![Diagram obrazujacy komunikacje w ramach MVP](http://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Model_View_Presenter_GUI_Design_Pattern.png/220px-Model_View_Presenter_GUI_Design_Pattern.png)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter)
+
+> [Diagram pochodzi z serwisu Wikipedia.org](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter)
+
+Po co stosowac wzorzec?
+-----------------------
+
+Zastosowanie wzorca MVP przy integracji z Vaadinem (lub jakakolwiek biblioteka do budowy GUI) daje
+kilka waznych korzysci:
+
+ * pierwsza z nich jest organizacja kodu w ramach pewnej struktury (standardu) - w zwiazku z
+   powyzszym takiego standardu moze nauczyc sie kazdy, przez co szybciej mozna zrozumiec mechanike
+   dzialania obcej aplikacji
+ * kolejna jest odseparowanie warstwy widoku od warstwy logiki biznesowej co pozwala na
+   bezinwazyjna zmiane biblioteki odpowiedzialnej za generowanie GUI - innymi slowy, poczatkowo za
+   warstwe graficzna moze odpowiedac biblioteka Vaadin, ktory ostatecznie moze zostac zamieniona
+   np. na Swinga. Daje to niesamowita elastycznosc, co jest mozliwe dzieki komunikacji z widokiem
+   poprzez interfejs widoku.
+ * nizsze koszty utrzymania, a takze rozwoju aplikacji - kod ustandardyzowany, napisany w ramach
+   znanego schematu (wzorca) automatycznie staje sie latwiejszy w zrozumieniu i modyfikacji.
+   Zapoznanie sie z takim projektem zajmie mniej czasu, a znalezienie odpowiednich specialistow nie
+   bedzie graniczylo z cudem :)
+
+
+Szyna zdarzen, czyli EventBus
+-----------------------------
